@@ -4,7 +4,7 @@ import exphbs from 'express-handlebars';
 import nodemailerhbs from 'nodemailer-express-handlebars';
 import mailConfig from '../config/mail';
 class Mail {
-    contructor() {
+    constructor() {
         const { host, port, secure, auth } = mailConfig;
         this.transporter = nodemailer.createTransport({
             host,
@@ -22,7 +22,7 @@ class Mail {
                 layoutsDir: resolve(viewPath, 'layouts'),
                 partialsDir: resolve(viewPath, 'partials'),
                 defaultLayout: 'default',
-                extName: '.hbs'
+                extname: '.hbs'
             }),
             viewPath,
             extName: '.hbs',
@@ -30,9 +30,9 @@ class Mail {
     }
 
     sendMail(message) {
-        return this.transporter.sendMail({
-            ...mailConfig.default,
-            ...message,
+         this.transporter.sendMail({
+            ... mailConfig.default,
+            ... message,
         });
     };
 };
